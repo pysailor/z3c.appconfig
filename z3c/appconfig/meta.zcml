@@ -5,7 +5,9 @@
   <include package="zope.component" file="meta.zcml"/>
 
   <utility
-    factory=".config.AppConfig"/>
+    factory=".config.AppConfig"
+    provides=".interfaces.IAppConfig"
+  />
 
   <meta:directive
     namespace="http://namespaces.zope.org/zope"
