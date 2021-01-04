@@ -19,9 +19,11 @@ class AppConfig(dict):
 
     _initialized = False
 
-    def loadConfig(self, filename, clear=False):
+    def loadConfig(self, input, clear=False):
         parser=ConfigParser.SafeConfigParser()
-        parser.readfp(open(filename))
+        if isinstance(input, basestring):
+            input=open(input)
+        parser.readfp(input)
 
         if clear:
             dict.clear(self)
@@ -38,6 +40,7 @@ class AppConfig(dict):
     __str__ = checkInitialised(dict.__str__)
     __sizeof__ = checkInitialised(dict.__sizeof__)
     copy = checkInitialised(dict.copy)
+    get = checkInitialised(dict.get)
     has_key = checkInitialised(dict.has_key)
     items = checkInitialised(dict.items)
     iteritems = checkInitialised(dict.iteritems)
